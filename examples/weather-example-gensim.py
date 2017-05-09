@@ -20,7 +20,7 @@ if __name__ == "__main__":
             "sun"
             ],
         'location' : ' in (?P<location>.*)'
-    })
-    intent.teachWords(["Weather in Bangkok?", "Good weather in Canada?", "Is it rain in North California?"], typeOfSim='gensim')
+    }, typeOfSim='gensim')
+    intent.teachWords(["Weather in Bangkok?", "Good weather in Canada?", "Is it rain in North California?"])
     print(intent.getResult("Rain in Khon Kaen?"))
     print(intent.getResult("Is it rain in California?"))
