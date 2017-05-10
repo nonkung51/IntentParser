@@ -1,7 +1,7 @@
 import intentparser
 
 intent = intentparser.intentParser({
-# 1 for optinal 2 for regex
+
     'description' : {
                     "type" : 'WeatherIntent',
                     "args" : [(2,"location"), (1, "weather_types")],
