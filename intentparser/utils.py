@@ -1,6 +1,4 @@
 def jaccard_compare(text1, text2):
-    #from nltk.tokenize import TweetTokenizer
-    #tknzr = TweetTokenizer()
     text1 = remove_stopwords(text1)
     text2 = remove_stopwords(text2)
     same_word = []
@@ -11,22 +9,17 @@ def jaccard_compare(text1, text2):
     return len(same_word) / ((len(text1) + len(text2)) /2)
 
 def remove_stopwords(text):
-    from nltk.corpus import stopwords
-    from nltk.tokenize import TweetTokenizer
-    stop_words = stopwords.words('english')
-    tknzr = TweetTokenizer()
-    text = tknzr.tokenize(text.lower())
+    text = tokenize(text)
     text_return = []
+    stop_words = ['ไว้', 'ไม่', 'ไป', 'ได้', 'ให้', 'ใน', 'โดย', 'แห่ง', 'แล้ว', 'และ', 'แรก', 'แบบ', 'แต่', 'เอง', 'เห็น', 'เลย', 'เริ่ม', 'เรา']
     for word in text:
         if word not in stop_words:
             text_return.append(word)
     return text_return
 
 def tokenize(text):
-    from nltk.tokenize import TweetTokenizer
-    tknzr = TweetTokenizer()
-    text = tknzr.tokenize(text.lower())
-    return text
+    from pythainlp.segment import segment
+    return segment(text)
 
 def intersect(a, b):
      return [val for val in a if val in b]
