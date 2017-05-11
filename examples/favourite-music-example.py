@@ -1,13 +1,13 @@
-import intentparser
+import intentparser as ip
 
 if __name__ == "__main__":
-    intent = intentparser.intentParser({
+    intent = ip.intentParser({
         'description' : {
                         "type" : 'FavMusicIntent',
-                        "args" : [(1, "musics_types")],
+                        "args" : [(ip.OPTIONAL, "musics_types")],
                         "keyword" : [
-                        (0, "musics_keyword"),
-                        (1, "musics_types")
+                        (ip.REQUIRE, "musics_keyword"),
+                        (ip.OPTIONAL, "musics_types")
                         ]},
         'musics_keyword' : ['is', 'are', 'music', 'favourite', 'genre'],
         'musics_types' : [
