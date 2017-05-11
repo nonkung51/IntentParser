@@ -1,15 +1,14 @@
-import intentparser
+import intentparser as ip
 
 if __name__ == "__main__":
     intent = intentparser.intentParser({
-    # 1 for optinal 2 for regex
         'description' : {
                         "type" : 'WeatherIntent',
-                        "args" : [(2,"location"), (1, "weather_types")],
+                        "args" : [(ip.REGEX,"location"), (ip.OPTIONAL, "weather_types")],
                         "keyword" : [
-                        (0, "weather_keyword"),
-                        (1, "weather_types"),
-                        (2, "location")
+                        (ip.REQUIRE, "weather_keyword"),
+                        (ip.OPTIONAL, "weather_types"),
+                        (ip.REGEX, "location")
                         ]},
         'weather_keyword' : ['is', 'are', 'weather', 'sleet', 'rain', 'humid'],
         'weather_types' : [
