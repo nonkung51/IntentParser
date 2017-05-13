@@ -96,11 +96,10 @@ class intentParser(object):
             for i in self.SmallList:
                 if i[0] == 2:
                     regex = i[2]
-                    regex.replace(i[1], "a")
-                    regex_word = re.search(regex, text)
+                    regex_word = re.findall(regex, text)
                     try:
-                        regex_word = regex_word.group(1)
-                        return_args.append((i[1], regex_word))
+                        if len(regex_word) >= 0:
+                            return_args.append((i[1], regex_word))
                     except Exception as e:
                         return {"confidence" : self.getTextConfidence(text),
                                 "type" : self.type,
