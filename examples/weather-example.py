@@ -1,8 +1,9 @@
 import intentparser
 
+__author__ = 'Nonthakon Jitchiranant'
+
 if __name__ == "__main__":
     intent = intentparser.intentParser({
-    # 1 for optinal 2 for regex
         'description' : {
                         "type" : 'WeatherIntent',
                         "args" : [(ip.REGEX,"location"), (ip.OPTIONAL, "weather_types")],
