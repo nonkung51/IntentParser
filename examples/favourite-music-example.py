@@ -1,5 +1,7 @@
 import intentparser as ip
 
+__author__ = 'Nonthakon Jitchiranant'
+
 if __name__ == "__main__":
     intent = ip.intentParser({
         'description' : {
