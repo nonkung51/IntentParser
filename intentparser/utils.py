@@ -1,3 +1,5 @@
+__author__ = 'Nonthakon Jitchiranant'
+
 def jaccard_compare(text1, text2):
     #from nltk.tokenize import TweetTokenizer
     #tknzr = TweetTokenizer()
