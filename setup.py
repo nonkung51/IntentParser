@@ -2,7 +2,7 @@ from setuptools import setup
 from setuptools import find_packages
 
 
-setup(name='Simple-Intent-Parser',
+setup(name='intentparser',
       version='1.5.9',
       description='Use to parse an intent easily.',
       author='Nonthakon Jitchiranant',
