@@ -3,7 +3,7 @@ from setuptools import find_packages
 
 
 setup(name='Simple-Intent-Parser',
-      version='1.5.9',
+      version='1.5.14',
       classifiers=[
             'Development Status :: 3 - Alpha',
 
@@ -27,6 +27,6 @@ setup(name='Simple-Intent-Parser',
       url='https://github.com/nonkung51/IntentParser',
       download_url='https://github.com/nonkung51/IntentParser/archive/master.zip',
       license='Apache-2.0',
-      install_requires=['nltk', 'gensim'],
+      install_requires=['gensim'],
       keywords='ai chatbot intentparser',
       packages=find_packages(exclude=['examples']),)

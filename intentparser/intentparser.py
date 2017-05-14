@@ -1,6 +1,12 @@
 import re
 from intentparser.utils import *
 
+__author__ = 'Nonthakon Jitchiranant'
+
+REQUIRE = 0
+OPTIONAL = 1
+REGEX = 2
+
 class intentParser(object):
     def __init__(self, construct, typeOfSim='jaccard'):
         self.construct = construct
@@ -24,8 +30,6 @@ class intentParser(object):
                 self.BigList.append([1, i[1], self.construct[i[1]]])
             elif i[0] == 2:
                 self.BigList.append([2, i[1], self.construct[i[1]]])
-            #elif i[0]] = 3:
-            #    self.Biglist.append(3, self.keyword[i][1], (self.construct[self.keyword[i][1]]))
                 """
                 BigList should be like
                 [(0, "weather_keyword", ['weather']),
@@ -57,7 +61,6 @@ class intentParser(object):
             for i in self.know_words:
                 intend_confidenceList.append(jaccard_compare(text, i))
             if len(self.know_words) > 0:
-                #return sum(intend_confidenceList) / len(self.know_words)
                 return max(intend_confidenceList)
             else :
                 return 0
@@ -92,11 +95,10 @@ class intentParser(object):
             for i in self.SmallList:
                 if i[0] == 2:
                     regex = i[2]
-                    regex.replace(i[1], "a")
-                    regex_word = re.search(regex, text)
+                    regex_word = re.findall(regex, text)
                     try:
-                        regex_word = regex_word.group(1)
-                        return_args.append((i[1], regex_word))
+                        if len(regex_word) >= 0:
+                            return_args.append((i[1], regex_word))
                     except Exception as e:
                         return {"confidence" : self.getTextConfidence(text),
                                 "type" : self.type,
