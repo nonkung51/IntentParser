@@ -1,6 +1,8 @@
 import re
 from intentparser.utils import *
 
+__author__ = 'Nonthakon Jitchiranant'
+
 REQUIRE = 0
 OPTIONAL = 1
 REGEX = 2
