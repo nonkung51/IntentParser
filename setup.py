@@ -10,5 +10,4 @@ setup(name='intentparser',
       url='https://github.com/nonkung51/IntentParser',
       download_url='https://github.com/nonkung51/IntentParser/archive/master.zip',
       license='Apache-2.0',
-      install_requires=['gensim'],
       packages=find_packages())
