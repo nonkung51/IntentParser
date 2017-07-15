@@ -1,6 +1,7 @@
 import intentparser as ip
 import datetime
 import random
+import sys
 
 __author__ = 'Nonthakon Jitchiranant'
 
@@ -67,7 +68,7 @@ while True:
             print(random.choice(['Chatbot said : Good bye!',
                                 'Chatbot said : Good Luck!',
                                 'Chatbot said : See ya!']))
-            break
+            sys.exit(0)
         elif candidate[1] == 'TimeIntent':
             typeOfTime = TimeIntent.getResult(text)['args']
             typeOfTime = [item for item in typeOfTime if item[0] == 'scopes'][0][1]
