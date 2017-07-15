@@ -111,3 +111,8 @@ result
 
     {'confidence': 0.95491028, 'args': [('location', 'Khon Kaen?'), ('weather_types', ['rain'])], 'type': 'WeatherIntent'}
     {'confidence': 0.95491028, 'args': [('location', 'California?'), ('weather_types', ['rain'])], 'type': 'WeatherIntent'}
+    
+
+Usage
+===============
+https://medium.com/@nonthakon/making-a-chatbots-in-python-67e9e6a8317b <=== making a chatbot. check it out!
