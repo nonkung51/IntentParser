@@ -18,8 +18,8 @@ def remove_stopwords(text):
     return text_return
 
 def tokenize(text):
-    from pythainlp.segment import segment
-    return segment(text)
+    from pythainlp.tokenize import word_tokenize
+    return word_tokenize(text)
 
 def intersect(a, b):
      return [val for val in a if val in b]
