@@ -1,15 +1,15 @@
-import intentparser
+import intentparser as ip
 
 if __name__ == "__main__":
-    intent = intentparser.intentParser({
+    intent = ip.intentParser({
     # 1 for optinal 2 for regex
         'description' : {
                         "type" : 'ถามเพลงโปรด',
-                        "args" : [(2,"ชื่อเพลง"), (1, "แนวเพลง")],
+                        "args" : [(ip.REGEX,"ชื่อเพลง"), (ip.OPTIONAL, "แนวเพลง")],
                         "keyword" : [
-                        (0, "คำบอก"),
-                        (1, "แนวเพลง"),
-                        (2, "ชื่อเพลง")
+                        (ip.REQUIRE, "คำบอก"),
+                        (ip.OPTIONAL, "แนวเพลง"),
+                        (ip.REGEX, "ชื่อเพลง")
                         ]},
         'คำบอก' : ['ผม', 'ชอบ', 'เจ๋ง', 'โปรด', 'เพลง', 'แนว'],
         'แนวเพลง' : [
