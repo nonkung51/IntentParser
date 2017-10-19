@@ -1,6 +1,10 @@
 import re
 from intentparser.utils import *
 
+REQUIRE = 0
+OPTIONAL = 1
+REGEX = 2
+
 class intentParser(object):
     def __init__(self, construct, typeOfSim='jaccard'):
         self.construct = construct
