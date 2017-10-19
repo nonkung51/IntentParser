@@ -1,100 +1,50 @@
-# IntentParser
-Simple intent parser for python 3
+# IntentParser สำหรับ Python
 
-This is incredibly simple intent parser. Easy to use and hackable.
+Intent parser อย่างง่ายใช้สำหรับทำ chatbot และอื่นๆ
 
-Installation
-===============
-    $ git clone https://github.com/nonkung51/IntentParser.git
-    $ cd IntentParser
-    $ python setup.py install
+## เริ่มต้น
 
-Examples
-===============
-this is a simple intent parser for parsing favourite music genre.
-
-    import intentparser
-
-    intent = intentparser.intentParser({
+สิ่งที่ต้องทำก็คือ กำหนดพฤติกรรมของ Intent parser สอนมัน แล้วก็เสร็จ!
+```
+ intent = ip.intentParser({
         'description' : {
-                        "type" : 'FavMusicIntent',
-                        "args" : [(1, "musics_types")],
-                        "keyword" : [
-                        (0, "musics_keyword"),
-                        (1, "musics_types")
-                        ]},
-        'musics_keyword' : ['is', 'are', 'music', 'favourite', 'genre'],
-        'musics_types' : [
-            "pop",
-            "rock",
-            "jazz",
-            "country",
-            "reggae"
-            ]
+                        "type" : 'ถามเพลงโปรด',
+                        "args" : [(ip.REGEX,"ชื่อเพลง"), (ip.OPTIONAL, "แนวเพลง")],
+                        "keyword" : [(ip.REQUIRE, "คำบอก"),(ip.OPTIONAL, "แนวเพลง"),(ip.REGEX, "ชื่อเพลง")]},
+        'คำบอก' : ['ผม', 'ชอบ', 'เจ๋ง', 'โปรด', 'เพลง', 'แนว'],
+        'แนวเพลง' : ["ป๊อป","ร็อค","แจ๊ส","คันทรี","เพลงไทย"],
+        'ชื่อเพลง' : ' เพลง (?P<location>.*)'
     })
-    intent.teachWords(["I love Reggae music.", "Rock is my favourite.", "I love Country music genre."])
+```
+นี่คือขั้นตอนการสร้างทั้งหมด ต่อไปคือการสอน
+```
+intent.teachWords(["ผมชอบเพลง Yellow", "ฉันรักเพลงแจ๊ส", "เพลงไทยสนุกมาก"])
+#ใข้ teachWords() พร้อมกับ list ของประโยคที่จะฝึก
+#สอนกี่ครั้งก็ได้แล้วแต่สถานการณ์
+```
+มันทำอะไรได้บ้าง?
+```
+print(intent.getResult("ผมชอบเพลงร็อต"))
+print(intent.getResult("เพลงคันทรีสนุกมาก"))
+```
+ผลที่ได้
+```
+{'type': 'ถามเพลงโปรด', 'args': [('แนวเพลง', ['rock'])], 'confidence': 0.75}
+{'type': 'ถามเพลงโปรด', 'args': [('แนวเพลง', ['jazz'])], 'confidence': 0.6666666666666666}
+```
+ใช้ได้ๆ!
 
-    print(intent.getResult("I love Rock music."))
-    print(intent.getResult("Jazz is my favourite."))
+### วิธีการติดตั้ง
+แค่ดาวน์โหลด .zip ไปแตกไฟล์จากนั้นรันคำสั่งตามนี้
 
+```
+$ cd IntentParser
+$ python setup.py install
+```
 
+## Contributing
+โมดูลนี้ผม([nonkung51](https://github.com/nonkung51)) สร้างแค่คนเดียวครับ ถ้าอยากปรับตรงไหนก็ pull request มาได้เลยครับ 
 
-this one is for parsing weather and location for weather forecasting
+## License
 
-
-    import intentparser
-
-    intent = intentparser.intentParser({
-        'description' : {
-                        "type" : 'WeatherIntent',
-                        "args" : [(2,"location"), (1, "weather_types")],
-                        "keyword" : [
-                        (0, "weather_keyword"),
-                        (1, "weather_types"),
-                        (2, "location")
-                        ]},
-        'weather_keyword' : ['is', 'are', 'weather', 'sleet', 'rain', 'humid'],
-        'weather_types' : [
-            "snow",
-            "rain",
-            "wind",
-            "sleet",
-            "sun"
-            ],
-        'location' : ' in (?P<location>.*)'
-    })
-    intent.teachWords(["Weather in Bangkok?", "Good weather in Canada?", "Is it rain in North California?"])
-
-    print(intent.getResult("Rain in Khon Kaen?"))
-    print(intent.getResult("Is it rain in California?"))
-
-
-And this is the previous one but use gensim sentence comparison instead of jaccard comparison
-
-
-    import intentparser
-
-    intent = intentparser.intentParser({
-        'description' : {
-                        "type" : 'WeatherIntent',
-                        "args" : [(2,"location"), (1, "weather_types")],
-                        "keyword" : [
-                        (0, "weather_keyword"),
-                        (1, "weather_types"),
-                        (2, "location")
-                        ]},
-        'weather_keyword' : ['is', 'are', 'weather', 'sleet', 'rain', 'humid'],
-        'weather_types' : [
-            "snow",
-            "rain",
-            "wind",
-            "sleet",
-            "sun"
-            ],
-        'location' : ' in (?P<location>.*)'
-    }, typeOfSim='gensim')
-    intent.teachWords(["Weather in Bangkok?", "Good weather in Canada?", "Is it rain in North California?"])
-
-    print(intent.getResult("Rain in Khon Kaen?"))
-    print(intent.getResult("Is it rain in California?"))
-
+ลิขสิทธิ์เป็น Apache License 2.0 - ดูที่ [LICENSE.md](LICENSE.md) สำหรับรายละเอียด แต่ถ้าอยากใช้นอกเหนือจากขอบเขตนี้ก็คุยกันได้ครับ
