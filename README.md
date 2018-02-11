@@ -54,7 +54,7 @@ $ python setup.py install
 * [Making chatbot in python](https://medium.com/@nonthakon/making-a-chatbots-in-python-67e9e6a8317b) <=== making a chatbot. check it out!
 
 ## Contributing
-This module is contributing by alone myself(nonkung51). If you want to contributing just contact me!
+This module is contributing by myself(nonkung51). If you want to contributing just contact me!
 
 ## Authors
 
